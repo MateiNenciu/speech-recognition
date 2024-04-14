@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.speech.extras;
 import androidx.activity.result.ActivityResult;
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
@@ -82,7 +83,8 @@ public class SpeechRecognition extends Plugin implements Constants {
         String prompt = call.getString("prompt", null);
         boolean partialResults = call.getBoolean("partialResults", false);
         boolean popup = call.getBoolean("popup", false);
-        beginListening(language, maxResults, prompt, partialResults, popup, call);
+        int silenceLength = call.getInt("silenceLength", 3000);
+        beginListening(language, maxResults, prompt, partialResults, popup, silenceLength, call);
     }
 
     @PluginMethod
@@ -183,6 +185,7 @@ public class SpeechRecognition extends Plugin implements Constants {
         String prompt,
         final boolean partialResults,
         boolean showPopup,
+        int silenceLength,
         PluginCall call
     ) {
         Logger.info(getLogTag(), "Beginning to listen for audible speech");
@@ -193,6 +196,7 @@ public class SpeechRecognition extends Plugin implements Constants {
         intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResults);
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, bridge.getActivity().getPackageName());
         intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, partialResults);
+        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, silenceLength);
         intent.putExtra("android.speech.extra.DICTATION_MODE", partialResults);
 
         if (prompt != null) {

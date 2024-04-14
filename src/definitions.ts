@@ -132,4 +132,8 @@ export interface UtteranceOptions {
    * return partial results if found
    */
   partialResults?: boolean;
+  /**
+   * The amount of time that it should take after we stop hearing speech to consider the input possibly complete. This is used to prevent the endpointer cutting off during very short mid-speech pauses. Android only.
+   */
+  silenceLength?: number
 }
