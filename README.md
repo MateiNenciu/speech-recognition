@@ -289,13 +289,14 @@ Remove all the listeners that are attached to this plugin.
 
 #### UtteranceOptions
 
-| Prop                 | Type                 | Description                                                      |
-| -------------------- | -------------------- | ---------------------------------------------------------------- |
-| **`language`**       | <code>string</code>  | key returned from `getSupportedLanguages()`                      |
-| **`maxResults`**     | <code>number</code>  | maximum number of results to return (5 is max)                   |
-| **`prompt`**         | <code>string</code>  | prompt message to display on popup (Android only)                |
-| **`popup`**          | <code>boolean</code> | display popup window when listening for utterance (Android only) |
-| **`partialResults`** | <code>boolean</code> | return partial results if found                                  |
+| Prop                 | Type                 | Description                                                                                                                                                                                                        |
+| -------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`language`**       | <code>string</code>  | key returned from `getSupportedLanguages()`                                                                                                                                                                        |
+| **`maxResults`**     | <code>number</code>  | maximum number of results to return (5 is max)                                                                                                                                                                     |
+| **`prompt`**         | <code>string</code>  | prompt message to display on popup (Android only)                                                                                                                                                                  |
+| **`popup`**          | <code>boolean</code> | display popup window when listening for utterance (Android only)                                                                                                                                                   |
+| **`partialResults`** | <code>boolean</code> | return partial results if found                                                                                                                                                                                    |
+| **`silenceLength`**  | <code>number</code>  | The amount of time that it should take after we stop hearing speech to consider the input possibly complete. This is used to prevent the endpointer cutting off during very short mid-speech pauses. Android only. |
 
 
 #### PermissionStatus
